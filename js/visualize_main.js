@@ -62,7 +62,6 @@ function setPeriods(){
     }
     return mes;
 }
-
 function getArrayDates(day1, day2){
     // 2024-10-14 2024-10-31 <- FORMAT OF HOW THE ATTRIBUTES HAVE TO BE 
     var i1 = parseInt(day1.substring(day1.length-2, day1.length));
