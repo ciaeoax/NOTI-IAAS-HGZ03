@@ -101,13 +101,6 @@ async function submitForm() {
     } else if (loc == 'Consulta Externa'){
         localizacionvalue = 'Consulta Externa';
     }
-    
-    /*if (!(document.getElementById('nombreP').value).includes(" ")) {
-        alert('Ingrese un Nombre Completo.');
-        document.getElementById('submit').disabled = false;
-        return;
-    }*/
-
     if (document.getElementById('nss').value.length != 10){
         alert('Ingrese un NSS correcto: 10 dígitos.');
         document.getElementById('submit').disabled = false;
@@ -121,7 +114,13 @@ async function submitForm() {
         loader.hidden = true;
         return;
     }
-
+    const re = /[1-7](F|M)(1|2)[0-9]{3}(OR|ES|SF|SA|PE|ND)/;
+    if (re.test(document.getElementById('am').value.toUpperCase()) == false){
+        alert('Verifique el agregado médico. (8 caracteres)\nEjemplo: 1F2000OR');
+        document.getElementById('submit').disabled = false;
+        loader.hidden = true;
+        return;
+    }
     if (!(document.getElementById('nombre').value).includes(" ")) {
         alert('Ingrese el Nombre Completo de quien notifica.');
         document.getElementById('submit').disabled = false;
